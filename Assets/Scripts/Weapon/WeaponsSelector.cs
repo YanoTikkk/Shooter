@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +20,10 @@ public class WeaponsSelector : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha3))
         {
             ChangeWeapon(2);
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            ChangeWeapon(3);
         }
     }
     

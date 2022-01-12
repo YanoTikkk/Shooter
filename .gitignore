@@ -3,3 +3,6 @@ UserSettings
 *.sln
 Logs
 Library
+.idea
+obj
+*.DotSettings
