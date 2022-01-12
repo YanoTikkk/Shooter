@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -63,6 +61,6 @@ public class Enemy : MonoBehaviour
 
     private void RandomWeapon()
     {
-        indexWeapon[Random.Range(0,3)].SetActive(true);
+        indexWeapon[Random.Range(0,4)].SetActive(true);
     }
 }

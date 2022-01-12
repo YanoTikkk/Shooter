@@ -35,16 +35,17 @@ public class Player : MonoBehaviour
 
     private void Move(float speed)
     {
-        float h = Input.GetAxis("Horizontal") * speed;
+        float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical") * speed;
-        rigidbodyPlayer.AddForce(h,0,v,ForceMode.Acceleration);
+        rigidbodyPlayer.AddRelativeForce(0f,0f,v,ForceMode.Acceleration);
+        rigidbodyPlayer.AddRelativeTorque(0f,h,0f,ForceMode.Acceleration);
     }
 
     private void Jump(float speed)
     {
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            rigidbodyPlayer.AddForce(0,speed,0,ForceMode.Acceleration);
+            rigidbodyPlayer.AddForce(0f,speed,0f,ForceMode.Acceleration);
         }
     }
 
