@@ -5,3 +5,4 @@ Logs
 Library
 .idea
 obj
+*.DotSettings
