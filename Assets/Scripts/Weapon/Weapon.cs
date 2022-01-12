@@ -14,9 +14,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float dispersionMin = 5f;
     [SerializeField] private int maxAmmo = 10;
     [SerializeField] private float reloadTime = 4f;
+    [SerializeField] protected float distanceBullet = 1f;
     
     private float shotColdown = 0f;
-    private bool CanAttack => shotColdown <= 0f;
+    private bool canAttack => shotColdown <= 0f;
     private int curentAmmo;
 
     protected void Awake()
@@ -34,13 +35,14 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (CanAttack && curentAmmo > 0)
+        if (canAttack && curentAmmo > 0)
         {
             shotColdown = shotingRate;
             float randomDispersion = Random.Range(1f * dispersionMin,1f * dispersionMax);
             GameObject newBullets = Instantiate(bullet,spawnBullet.position, 
                 Quaternion.Euler(new Vector3(spawnBullet.rotation.x + randomDispersion,spawnBullet.rotation.y +randomDispersion,spawnBullet.rotation.z)));
             newBullets.GetComponent<Rigidbody>().velocity = newBullets.transform.TransformDirection(spawnBullet.forward) * bulletSpeed;
+            Destroy(newBullets,distanceBullet);
             curentAmmo -= 1;
         }
 

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5f;
 
     private Rigidbody rigidbodyPlayer;
-    private bool ground;
+    private bool isGrounded;
     
     private void Start()
     {
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void Jump(float speed)
     {
-        if (Input.GetKey(KeyCode.Space) && ground)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             rigidbodyPlayer.AddForce(0,speed,0,ForceMode.Acceleration);
         }
@@ -53,11 +53,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay(Collision collisionInfo)
     {
-        ground = true;
+        isGrounded = true;
     }
 
     private void OnCollisionExit(Collision other)
     {
-        ground = false;
+        isGrounded = false;
     }
 }
